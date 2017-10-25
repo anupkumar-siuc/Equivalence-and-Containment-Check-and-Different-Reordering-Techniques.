@@ -1,0 +1,100 @@
+#include"given.h"
+
+void test( NODE *graph, int Max,DdManager *manager )
+
+{
+
+DdNode *temp1,*temp2,*temp3,*fun1,*fun2;        //function bdds
+int j=0,i;
+LIST *temp;
+printf("BDD_Demo_Start\n--------------------\n");	
+manager = Cudd_Init(0,0,CUDD_UNIQUE_SLOTS,CUDD_CACHE_SLOTS,0); //intializing CUDD package manger
+Cudd_AutodynEnable(manager, CUDD_REORDER_WINDOW2);
+Cudd_ReduceHeap(manager, CUDD_REORDER_WINDOW2,3000);
+for ( i=1; i<= Max ; i++)
+
+  { 
+
+	if (graph[i].typ != 0 && graph[i].po==1) //equivalence check
+	{
+	switch(graph[i].typ) 
+		{
+	case INPT:
+		graph[i].fun=Cudd_bddIthVar(manager,j);  Cudd_Ref(graph[i].fun);
+		printf("........BDD of INPT=%d........ \n",i); 
+		Cudd_PrintMinterm(manager,graph[i].fun);
+		j++;
+		//printf("level_INPT_wokrs\n");
+		//printf("--------------------\n");
+		break;
+
+	case NAND:	
+		temp=NULL;
+		temp=graph[i].fin;
+		graph[i].fun=Cudd_bddIthVar(manager,j);  Cudd_Ref(graph[i].fun);
+		printf("\n********************BDD=%d********************\n",i); 
+		//Cudd_PrintMinterm(manager,graph[i].fun);
+		j++;
+		temp1=Cudd_ReadOne(manager);	Cudd_Ref(temp1);
+						
+		while(temp !=NULL)
+		{
+		temp2=Cudd_bddAnd(manager,temp1,graph[temp->id].fun); 
+		Cudd_Ref(temp2);   	Cudd_RecursiveDeref(manager,temp1);  //tmp2= a
+		temp1=temp2; Cudd_Ref(temp1);  	Cudd_RecursiveDeref(manager,temp2);  //tmp1=a 
+		printf("level_NAND_wokrs \n");
+		printf("for gate=%d  fan.in_list=%d\n",i,temp->id);		
+		temp=temp-> nxt;	
+		}
+		/*for NOT portion */
+                fun2=Cudd_ReadOne(manager);	Cudd_Ref(fun2);
+		temp3=Cudd_bddNand(manager,fun2,temp1);	Cudd_Ref(temp3);	Cudd_RecursiveDeref(manager,temp1);
+		fun1=temp3;	Cudd_Ref(fun1); Cudd_RecursiveDeref(manager,temp3);
+		
+		//temp2=Cudd_Not(temp1); Cudd_Ref(temp2); Cudd_RecursiveDeref(manager,temp1);
+		//temp1=temp2; Cudd_Ref(temp1); Cudd_RecursiveDeref(manager,temp2);
+		printf("NAND_BDD_function=\n");
+		Cudd_PrintMinterm(manager,fun1);
+		//printf("level_NOT_wokrs \n");
+
+		
+	
+		break; 
+
+	case FROM:	
+		temp=NULL;
+		temp=graph[i].fin;
+		graph[i].fun=Cudd_bddIthVar(manager,j);  Cudd_Ref(graph[i].fun);
+		//printf("BDD %d \n",i); 
+		//Cudd_PrintMinterm(manager,graph[i].fun);
+		j++;
+		temp1=Cudd_ReadOne(manager);	Cudd_Ref(temp1);
+		temp2=Cudd_bddAnd(manager,temp1,graph[temp->id].fun); Cudd_Ref(temp2); Cudd_RecursiveDeref(manager,temp1);  //tmp2= a
+		temp1=temp2; Cudd_Ref(temp1);  	Cudd_RecursiveDeref(manager,temp2);  //tmp1=a 
+		//printf("\nlevel_FROM_wokrs \n");
+		//printf("input=%d is from=%d\n",i,temp->id);		
+		break;
+
+		}
+
+//equivalence check
+				
+
+	}
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
