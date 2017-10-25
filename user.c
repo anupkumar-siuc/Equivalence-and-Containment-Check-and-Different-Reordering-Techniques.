@@ -284,7 +284,6 @@ for(i=0;i<=Max;i++)  {
 		if (nns2> nns1/2) {
         tic = clock();
         Cudd_ReduceHeap(manager,w,0);
-        //printf("w= %d\n",w);
        	nns3=Cudd_DagSize(graph[i].fun);
         printf("For node %d number of max node in manager before reordering %d after reordering %d\n",i,nns2,nns3);
           if(nns4<nns3) nns4=nns3;
@@ -296,7 +295,6 @@ for(i=0;i<=Max;i++)  {
 		if (nns2> nns1/2) {
         tic = clock();
         Cudd_ReduceHeap(manager,w,0);
-        //printf("w= %d\n",w);
        	nns3=Cudd_DagSize(graph[i].fun);
         printf("For node %d number of max node in manager before reordering %d after reordering %d\n",i,nns2,nns3);
           if(nns4<nns3) nns4=nns3;
@@ -308,7 +306,6 @@ for(i=0;i<=Max;i++)  {
 		if (nns2> nns1/2) {
         tic = clock();
         Cudd_ReduceHeap(manager,w,0);
-        //printf("w= %d\n",w);
        	nns3=Cudd_DagSize(graph[i].fun);
         printf("For node %d number of max node in manager before reordering %d after reordering %d\n",i,nns2,nns3);
           if(nns4<nns3) nns4=nns3;
@@ -320,7 +317,6 @@ for(i=0;i<=Max;i++)  {
 		if (nns2> nns1/2) {
         tic = clock();
         Cudd_ReduceHeap(manager,w,0);
-        //printf("w= %d\n",w);
        	nns3=Cudd_DagSize(graph[i].fun);
         printf("For node %d number of max node in manager before reordering %d after reordering %d\n",i,nns2,nns3);
           if(nns4<nns3) nns4=nns3;
@@ -332,7 +328,6 @@ for(i=0;i<=Max;i++)  {
 		if (nns2> nns1/2) {
         tic = clock();
         Cudd_ReduceHeap(manager,w,0);
-        //printf("w= %d\n",w);
        	nns3=Cudd_DagSize(graph[i].fun);
         printf("For node %d number of max node in manager before reordering %d after reordering %d\n",i,nns2,nns3);
           if(nns4<nns3) nns4=nns3;
@@ -344,7 +339,6 @@ for(i=0;i<=Max;i++)  {
 		if (nns2> nns1/2) {
         tic = clock();
         Cudd_ReduceHeap(manager,w,0);
-        //printf("w= %d\n",w);
        	nns3=Cudd_DagSize(graph[i].fun);
         printf("For node %d number of max node in manager before reordering %d after reordering %d\n",i,nns2,nns3);
           if(nns4<nns3) nns4=nns3;
@@ -356,7 +350,6 @@ for(i=0;i<=Max;i++)  {
 		if (nns2> nns1/2) {
         tic = clock();
         Cudd_ReduceHeap(manager,w,0);
-        //printf("w= %d\n",w);
        	nns3=Cudd_DagSize(graph[i].fun);
         printf("For node %d number of max node in manager before reordering %d after reordering %d\n",i,nns2,nns3);
           if(nns4<nns3) nns4=nns3;
@@ -368,7 +361,6 @@ for(i=0;i<=Max;i++)  {
 		if (nns2> nns1/2) {
         tic = clock();
         Cudd_ReduceHeap(manager,w,0);
-        //printf("w= %d\n",w);
        	nns3=Cudd_DagSize(graph[i].fun);
         printf("For node %d number of max node in manager before reordering %d after reordering %d\n",i,nns2,nns3);
           if(nns4<nns3) nns4=nns3;
@@ -380,15 +372,12 @@ for(i=0;i<=Max;i++)  {
 		if (nns2> nns1/2) {
         tic = clock();
         Cudd_ReduceHeap(manager,w,0);
-        //printf("w= %d\n",w);
        	nns3=Cudd_DagSize(graph[i].fun);
         printf("For node %d number of max node in manager before reordering %d after reordering %d\n",i,nns2,nns3);
           if(nns4<nns3) nns4=nns3;
         }
 		break; 
-   
-   
-
+			
 }  }  } 
   //cpu time 
   toc = clock();
@@ -402,23 +391,3 @@ printf("\n\nBDD Demo End\n");
 return;	
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
